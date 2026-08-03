@@ -1,10 +1,30 @@
+import { Suspense } from "react";
+
+import { DataTableSkeleton } from "@/components/admin/crud/data-table-skeleton";
+import { PageHeader } from "@/components/admin/crud/page-header";
+import { StateList } from "@/components/admin/state/state-list";
+import { Card, CardContent } from "@/components/ui/card";
+
+function StateListFallback() {
+  return (
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        title="State"
+        description="Manage states used across address data."
+      />
+      {/* <Card>
+        <CardContent> */}
+      <DataTableSkeleton columns={3} rows={10} />
+      {/* </CardContent>
+      </Card> */}
+    </div>
+  );
+}
+
 export default function StatePage() {
   return (
-    <div className="flex flex-col gap-2">
-      <h1 className="text-2xl font-semibold tracking-tight">State</h1>
-      <p className="text-sm text-muted-foreground">
-        Manage states used across address data.
-      </p>
-    </div>
+    <Suspense fallback={<StateListFallback />}>
+      <StateList />
+    </Suspense>
   );
 }

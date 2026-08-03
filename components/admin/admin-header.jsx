@@ -48,6 +48,9 @@ const routeLabels = {
   region: "Region",
   city: "City",
   state: "State",
+  postcode: "Postcode",
+  add: "Add",
+  edit: "Edit",
 };
 
 function getBreadcrumbs(pathname) {
