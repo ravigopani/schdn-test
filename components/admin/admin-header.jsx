@@ -33,6 +33,8 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { ADMIN_LOGIN_PATH } from "@/lib/constants";
+import { clearAdminToken } from "@/lib/auth-cookies";
 
 const routeLabels = {
   admin: "Dashboard",
@@ -159,7 +161,8 @@ export function AdminHeader() {
               <DropdownMenuItem
                 variant="destructive"
                 onClick={() => {
-                  window.location.href = "/";
+                  clearAdminToken();
+                  window.location.assign(ADMIN_LOGIN_PATH);
                 }}>
                 <LogOutIcon />
                 Log out
